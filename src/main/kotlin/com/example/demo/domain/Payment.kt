@@ -29,6 +29,10 @@ class Payment(
     @Column(name = "updated_at", nullable = false)
     var updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
+    fun updateCancel() {
+        this.status = PaymentStatus.CANCELLED
+        this.updatedAt = LocalDateTime.now()
+    }
 
     companion object {
         fun createPayment(orderId: String, merchantId: String, price: Int): Payment {

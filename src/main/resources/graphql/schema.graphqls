@@ -21,10 +21,11 @@ type QueryPaymentResponse {
 
 input CancelPaymentRequest {
     orderId: String
+    merchantId: String
 }
 
 type CancelPaymentResponse {
-    paymentId: String
+    orderId: String
     result: String
 }
 

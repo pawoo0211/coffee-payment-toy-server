@@ -22,20 +22,21 @@ class PaymentController(private val paymentService: PaymentService) {
 
     @MutationMapping
     fun createPayment(@Argument request: CreatePaymentRequest): CreatePaymentResponse? {
+        System.out.println("결제 생성 요청 ${request}")
         val createPaymentResponse = paymentService.createPayment(request)
         return createPaymentResponse
     }
 
     @MutationMapping
-    fun cancelOrder(@Argument request: CancelPaymentRequest): CancelPaymentResponse {
-        return CancelPaymentResponse(
-            paymentId = "temp_id",
-            result = "CANCELED"
-        )
+    fun cancelPayment(@Argument request: CancelPaymentRequest): CancelPaymentResponse? {
+        System.out.println("결제 취소 요청 ${request}")
+        val cancelPaymentResponse = paymentService.cancelPayment(request)
+        return cancelPaymentResponse
     }
 
     @QueryMapping
     fun queryPayment(@Argument request: QueryPaymentRequest): QueryPaymentResponse? {
+        System.out.println("결제 조회 요청 ${request}")
         val queryPaymentResponse = paymentService.queryPayment(request)
         return queryPaymentResponse
     }
