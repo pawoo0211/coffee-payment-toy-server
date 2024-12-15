@@ -1,6 +1,6 @@
 CREATE TABLE payments (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    order_id VARCHAR(255) NOT NULL UNIQUE,
+    order_id VARCHAR(255) NOT NULL,
     merchant_id VARCHAR(255) NOT NULL,
     price INT NOT NULL,
     status VARCHAR(50) NOT NULL,

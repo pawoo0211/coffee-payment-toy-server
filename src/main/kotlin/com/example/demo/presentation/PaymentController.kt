@@ -22,8 +22,9 @@ class PaymentController(private val paymentService: PaymentService) {
 
     @MutationMapping
     fun createPayment(@Argument request: CreatePaymentRequest): CreatePaymentResponse? {
-        System.out.println("결제 생성 요청 ${request}")
+        System.out.println("결제 생성 요청 : ${request}")
         val createPaymentResponse = paymentService.createPayment(request)
+        System.out.println("결제 생성 응답 : ${createPaymentResponse}")
         return createPaymentResponse
     }
 
@@ -31,6 +32,7 @@ class PaymentController(private val paymentService: PaymentService) {
     fun cancelPayment(@Argument request: CancelPaymentRequest): CancelPaymentResponse? {
         System.out.println("결제 취소 요청 ${request}")
         val cancelPaymentResponse = paymentService.cancelPayment(request)
+        System.out.println("결제 취소 응답 ${cancelPaymentResponse}")
         return cancelPaymentResponse
     }
 
@@ -38,6 +40,7 @@ class PaymentController(private val paymentService: PaymentService) {
     fun queryPayment(@Argument request: QueryPaymentRequest): QueryPaymentResponse? {
         System.out.println("결제 조회 요청 ${request}")
         val queryPaymentResponse = paymentService.queryPayment(request)
+        System.out.println("결제 조회 응답 ${queryPaymentResponse}")
         return queryPaymentResponse
     }
 }
