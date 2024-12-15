@@ -35,10 +35,8 @@ class PaymentController(private val paymentService: PaymentService) {
     }
 
     @QueryMapping
-    fun findOrder(@Argument request: QueryPaymentRequest): QueryPaymentResponse {
-        return QueryPaymentResponse(
-            "temp_id",
-            "temp_type"
-        )
+    fun queryPayment(@Argument request: QueryPaymentRequest): QueryPaymentResponse? {
+        val queryPaymentResponse = paymentService.queryPayment(request)
+        return queryPaymentResponse
     }
 }

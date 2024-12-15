@@ -11,6 +11,7 @@ type CreatePaymentResponse {
 
 input QueryPaymentRequest {
     orderId: String
+    merchantId: String
 }
 
 type QueryPaymentResponse {
@@ -28,7 +29,7 @@ type CancelPaymentResponse {
 }
 
 type Query {
-    findPayment(request: QueryPaymentRequest): QueryPaymentResponse
+    queryPayment(request: QueryPaymentRequest): QueryPaymentResponse
 }
 
 type Mutation {

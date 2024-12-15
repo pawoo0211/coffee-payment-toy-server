@@ -11,7 +11,7 @@ data class CreatePaymentResponse(
     }
 
     companion object {
-        fun createPayment(payment: Payment): CreatePaymentResponse? {
+        fun create(payment: Payment): CreatePaymentResponse? {
             return CreatePaymentResponse(paymentId = payment.id, "SUCCESS")
         }
     }
