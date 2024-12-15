@@ -16,6 +16,13 @@ spring:
       path: /h2-console
       enabled: true
 
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # 애플리케이션 시작 시 drop 후 생성
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
   graphql:
     graphiql:
       enabled: true
