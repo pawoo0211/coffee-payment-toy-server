@@ -1,0 +1,37 @@
+input CreateOrderRequest {
+    orderId: String,
+    merchantId: String,
+    price: Int
+}
+
+type CreateOrderResponse {
+    paymentId: String
+    result: String
+}
+
+input QueryOrderRequest {
+    orderId: String
+}
+
+type QueryOrderResponse {
+    paymentId: String
+    type: String
+}
+
+input CancelOrderRequest {
+    orderId: String
+}
+
+type CancelOrderResponse {
+    paymentId: String
+    result: String
+}
+
+type Query {
+    findOrder(request: QueryOrderRequest): QueryOrderResponse
+}
+
+type Mutation {
+    createOrder(request: CreateOrderRequest): CreateOrderResponse
+    cancelOrder(request: CancelOrderRequest): CancelOrderResponse
+}

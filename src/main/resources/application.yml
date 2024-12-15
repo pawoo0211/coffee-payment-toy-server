@@ -16,6 +16,12 @@ spring:
       path: /h2-console2
       enabled: true
 
+  graphql:
+    graphiql:
+      enabled: true
+      printer:
+        enabled: true
+
 logging:
   level:
     org:
