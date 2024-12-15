@@ -1,37 +1,37 @@
-input CreateOrderRequest {
+input CreatePaymentRequest {
     orderId: String,
     merchantId: String,
     price: Int
 }
 
-type CreateOrderResponse {
-    paymentId: String
+type CreatePaymentResponse {
+    paymentId: Int
     result: String
 }
 
-input QueryOrderRequest {
+input QueryPaymentRequest {
     orderId: String
 }
 
-type QueryOrderResponse {
+type QueryPaymentResponse {
     paymentId: String
     type: String
 }
 
-input CancelOrderRequest {
+input CancelPaymentRequest {
     orderId: String
 }
 
-type CancelOrderResponse {
+type CancelPaymentResponse {
     paymentId: String
     result: String
 }
 
 type Query {
-    findOrder(request: QueryOrderRequest): QueryOrderResponse
+    findPayment(request: QueryPaymentRequest): QueryPaymentResponse
 }
 
 type Mutation {
-    createOrder(request: CreateOrderRequest): CreateOrderResponse
-    cancelOrder(request: CancelOrderRequest): CancelOrderResponse
+    createPayment(request: CreatePaymentRequest): CreatePaymentResponse
+    cancelPayment(request: CancelPaymentRequest): CancelPaymentResponse
 }

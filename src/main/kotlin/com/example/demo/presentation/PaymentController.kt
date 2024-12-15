@@ -1,18 +1,19 @@
 package com.example.demo.presentation
 
-import com.example.demo.application.dto.request.CancelOrderRequest
-import com.example.demo.application.dto.request.CreateOrderRequest
-import com.example.demo.application.dto.request.QueryOrderRequest
-import com.example.demo.application.dto.response.CancelOrderResponse
-import com.example.demo.application.dto.response.CreateOrderResponse
-import com.example.demo.application.dto.response.QueryOrderResponse
+import com.example.demo.application.PaymentService
+import com.example.demo.application.dto.request.CancelPaymentRequest
+import com.example.demo.application.dto.request.CreatePaymentRequest
+import com.example.demo.application.dto.request.QueryPaymentRequest
+import com.example.demo.application.dto.response.CancelPaymentResponse
+import com.example.demo.application.dto.response.CreatePaymentResponse
+import com.example.demo.application.dto.response.QueryPaymentResponse
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.MutationMapping
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class PaymentController {
+class PaymentController(private val paymentService: PaymentService) {
 
     @QueryMapping
     fun hello(): String {
@@ -20,24 +21,22 @@ class PaymentController {
     }
 
     @MutationMapping
-    fun createOrder(@Argument request: CreateOrderRequest): CreateOrderResponse {
-        return CreateOrderResponse(
-            paymentId = "PAY1234",
-            result = "SUCCESS"
-        )
+    fun createPayment(@Argument request: CreatePaymentRequest): CreatePaymentResponse? {
+        val createPaymentResponse = paymentService.createPayment(request)
+        return createPaymentResponse
     }
 
     @MutationMapping
-    fun cancelOrder(@Argument request: CancelOrderRequest): CancelOrderResponse {
-        return CancelOrderResponse(
+    fun cancelOrder(@Argument request: CancelPaymentRequest): CancelPaymentResponse {
+        return CancelPaymentResponse(
             paymentId = "temp_id",
             result = "CANCELED"
         )
     }
 
     @QueryMapping
-    fun findOrder(@Argument request: QueryOrderRequest): QueryOrderResponse {
-        return QueryOrderResponse(
+    fun findOrder(@Argument request: QueryPaymentRequest): QueryPaymentResponse {
+        return QueryPaymentResponse(
             "temp_id",
             "temp_type"
         )
