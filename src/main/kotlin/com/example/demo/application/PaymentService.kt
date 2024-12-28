@@ -21,7 +21,6 @@ class PaymentService(private val repository: PaymentRepository) {
             request.merchantId,
             request.price
         )
-
         repository.save(payment)
         return CreatePaymentResponse.create(payment)
     }

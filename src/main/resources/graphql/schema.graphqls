@@ -5,7 +5,7 @@ input CreatePaymentRequest {
 }
 
 type CreatePaymentResponse {
-    paymentId: Int
+    paymentId: String
     result: String
 }
 

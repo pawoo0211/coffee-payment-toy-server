@@ -3,7 +3,7 @@ package com.example.demo.application.dto.response
 import com.example.demo.domain.Payment
 
 data class CreatePaymentResponse(
-    val paymentId: Long = 0L,
+    val paymentId: String = "",
     val result: String = "") {
 
     override fun toString(): String {

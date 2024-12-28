@@ -2,13 +2,13 @@ package com.example.demo.domain
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
+import java.util.UUID
 
 @Entity
 @Table(name = "payments")
 class Payment(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0L,
+    val id: String = "",
 
     @Column(name = "order_id", nullable = false, unique = true)
     var orderId: String = "",
@@ -37,6 +37,7 @@ class Payment(
     companion object {
         fun createPayment(orderId: String, merchantId: String, price: Int): Payment {
             return Payment(
+                id = "PG_" + UUID.randomUUID().toString().substring(0, 8),
                 orderId = orderId,
                 merchantId = merchantId,
                 price = price,
